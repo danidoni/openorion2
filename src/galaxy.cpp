@@ -3056,51 +3056,51 @@ void ColoniesListView::renderPlanetDetail(const Planet *planet_ptr, const Colony
 
 	switch(planet_ptr->size) {
 	case TINY_PLANET:
-		buf.printf("Tiny");
+		buf.append(gameLang->estrings(ESTR_PLANET_SIZE_TINY));
 		break;
 	case SMALL_PLANET:
-		buf.printf("Small");
+		buf.append(gameLang->estrings(ESTR_PLANET_SIZE_SMALL));
 		break;
 	case MEDIUM_PLANET:
-		buf.printf("Medium");
+		buf.append(gameLang->estrings(ESTR_PLANET_SIZE_MEDIUM));
 		break;
 	case LARGE_PLANET:
-		buf.printf("Large");
+		buf.append(gameLang->estrings(ESTR_PLANET_SIZE_LARGE));
 		break;
 	default:
-		buf.printf("Huge");
+		buf.append(gameLang->estrings(ESTR_PLANET_SIZE_HUGE));
 	}
 
 	switch(planet_ptr->climate) {
 	case TOXIC:
-		buf.append(" Toxic");
+		buf.append_printf(" %s", gameLang->estrings(ESTR_CLIMATE_TOXIC));
 		break;
 	case RADIATED:
-		buf.append(" Radiated");
+		buf.append_printf(" %s", gameLang->estrings(ESTR_CLIMATE_RADIATED));
 		break;
 	case BARREN:
-		buf.append(" Barren");
+		buf.append_printf(" %s", gameLang->estrings(ESTR_CLIMATE_BARREN));
 		break;
 	case DESERT:
-		buf.append(" Desert");
+		buf.append_printf(" %s", gameLang->estrings(ESTR_CLIMATE_DESERT));
 		break;
 	case TUNDRA:
-		buf.append(" Tundra");
+		buf.append_printf(" %s", gameLang->estrings(ESTR_CLIMATE_TUNDRA));
 		break;
 	case OCEAN:
-		buf.append(" Ocean");
+		buf.append_printf(" %s", gameLang->estrings(ESTR_CLIMATE_OCEAN));
 		break;
 	case SWAMP:
-		buf.append(" Swamp");
+		buf.append_printf(" %s", gameLang->estrings(ESTR_CLIMATE_SWAMP));
 		break;
 	case ARID:
-		buf.append(" Arid");
+		buf.append_printf(" %s", gameLang->estrings(ESTR_CLIMATE_ARID));
 		break;
 	case TERRAN:
-		buf.append(" Terran");
+		buf.append_printf(" %s", gameLang->estrings(ESTR_CLIMATE_TERRAN));
 		break;
 	default:
-		buf.append(" Gaia");
+		buf.append_printf(" %s", gameLang->estrings(ESTR_CLIMATE_GAIA));
 	}
 
 	fnt->renderText(COLONY_LIST_DETAILS_LEFT_PADDING, 354, FONT_COLOR_COLONY_LIST, buf.c_str());
@@ -3119,19 +3119,19 @@ void ColoniesListView::renderPlanetDetail(const Planet *planet_ptr, const Colony
 
 	switch(planet_ptr->minerals) {
 	case ULTRA_POOR:
-		buf.printf("Mineral Ultra poor");
+		buf.append_printf("Mineral %s", gameLang->estrings(ESTR_LMINERALS_ULTRA_POOR));
 		break;
 	case POOR:
-		buf.printf("Mineral Poor");
+		buf.append_printf("Mineral %s", gameLang->estrings(ESTR_LMINERALS_POOR));
 		break;
 	case ABUNDANT:
-		buf.printf("Mineral Abundant");
+		buf.append_printf("Mineral %s", gameLang->estrings(ESTR_LMINERALS_ABUNDANT));
 		break;
 	case RICH :
-		buf.printf("Mineral Rich");
+		buf.append_printf("Mineral %s", gameLang->estrings(ESTR_LMINERALS_RICH));
 		break;
 	default:
-		buf.printf("Mineral Ultra rich");
+		buf.append_printf("Mineral %s", gameLang->estrings(ESTR_LMINERALS_ULTRA_RICH));
 	}
 	fnt->renderText(COLONY_LIST_DETAILS_LEFT_PADDING, 376, FONT_COLOR_COLONY_LIST, buf.c_str());
 
