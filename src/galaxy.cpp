@@ -2975,6 +2975,10 @@ void ColoniesListView::initWidgets(void) {
 	w->setMouseUpCallback(MBUTTON_RIGHT,
 		GuiMethod(*this, &ColoniesListView::showHelp,
 			HELP_RETURN_BUTTON));
+	
+	farmer = new ColonistPickerWidget(0, 0, 100, 90, NULL, FARMER, _game->_players, _game->_playerCount);
+	worker = new ColonistPickerWidget(0, 0, 100, 90, NULL, WORKER, _game->_players, _game->_playerCount);
+	scientist = new ColonistPickerWidget(0, 0, 100, 90, NULL, SCIENTIST, _game->_players, _game->_playerCount);
 }
 
 void ColoniesListView::highlightSlot(int x, int y, int arg) {
@@ -3160,15 +3164,15 @@ void ColoniesListView::drawColonistsJobs(const Colony* colony_ptr, int curtick) 
 		farmers = colony_ptr->population;
 	}
 
-	ColonistPickerWidget* f = new ColonistPickerWidget(0, 0, 100, 90, colony_ptr, FARMER, _game->_players, _game->_playerCount);
-	f->redraw(103, 38, curtick);
+	farmer->setColony(colony_ptr);
+	farmer->redraw(103, 38, curtick);
 
 	// FIXME: This is showing no workers on some colonies...
-	ColonistPickerWidget* w = new ColonistPickerWidget(0, 0, 100, 90, colony_ptr, WORKER, _game->_players, _game->_playerCount);
-	w->redraw(237, 38, curtick);
+	worker->setColony(colony_ptr);
+	worker->redraw(237, 38, curtick);
 
-	ColonistPickerWidget* s = new ColonistPickerWidget(0, 0, 100, 90, colony_ptr, SCIENTIST, _game->_players, _game->_playerCount);
-	s->redraw(377, 38, curtick);
+	scientist->setColony(colony_ptr);
+	scientist->redraw(377, 38, curtick);
 }
 
 void ColoniesListView::drawEmpireDetails() {

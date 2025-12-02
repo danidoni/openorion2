@@ -22,6 +22,7 @@
 
 #include "gui.h"
 #include "gamestate.h"
+#include "colony.h"
 
 #define GALAXY_ARCHIVE "buffer0.lbx"
 #define ASSET_GALAXY_GUI 0
@@ -298,6 +299,9 @@ class ColoniesListView : public GuiView {
 private:
 	GameState *_game;
 	ScrollBarWidget *_scroll;
+	ColonistPickerWidget* farmer;
+	ColonistPickerWidget* worker;
+	ColonistPickerWidget* scientist;
 	int _curslot;
 	int _selectedSlot;
 	ImageAsset _bg;
