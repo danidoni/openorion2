@@ -3007,14 +3007,12 @@ void ColoniesListView::redraw(unsigned curtick) {
 
 	unsigned offset = 0; // FIXME: This should come from the scrollbar
 	int colony_row = 0;
-	for (i = 0; i < _game->_planetCount; i++) {
+	for (i = 0; i < _game->_colonyCount; i++) {
 		y = COLONY_LIST_FIRST_ROW + COLONY_LIST_ROW_DIST + colony_row * (COLONY_LIST_ROW_HEIGHT + COLONY_LIST_ROW_BOTTOM_PADDING);
-		planet_ptr = _game->_planets + offset + i;
-		if (planet_ptr->colony < 0) continue;
-
-		colony_ptr = &_game->_colonies[planet_ptr->colony];
+		colony_ptr = _game->_colonies + offset + i;
 		if (colony_ptr->owner != _activePlayer) continue;
 
+		planet_ptr = &_game->_planets[colony_ptr->planet];
 		star_ptr = &_game->_starSystems[planet_ptr->star];
 		if (_curslot == colony_row) {
 			color = FONT_COLOR_COLONY_LIST_BRIGHT;
